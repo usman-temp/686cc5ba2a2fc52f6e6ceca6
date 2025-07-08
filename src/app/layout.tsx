@@ -1,22 +1,19 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
+import './globals.css';
+import Link from 'next/link';
+const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
-
 export const metadata: Metadata = {
   title: 'Next Solutions - Digital Transformation Experts',
   description: 'Industry-leading digital solutions for modern businesses',
-keywords: ['digital transformation']
-};export default function RootLayout({
+  keywords: ['digital transformation'],
+};
+export default function RootLayout({
+  children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
@@ -54,36 +51,6 @@ keywords: ['digital transformation']
         </nav>{' '}
         {children}{' '}
       </body>{' '}
-    </html>
-  );
-}
-
-            href="/why-us"
-            className="hover:text-blue-600 transition-colors"
-          >
-            Why Us
-          </Link>
-          <Link
-            href="/contact"
-            className="hover:text-blue-600 transition-colors"
-          >
-            Contact
-          </Link>
-        </div>
-      </div>
-    </nav>
-    {children}
-  </body>
-</html>;
-
-}>) {
-  return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
     </html>
   );
 }
