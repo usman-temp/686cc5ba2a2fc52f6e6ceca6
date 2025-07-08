@@ -31,12 +31,7 @@ export default function RootLayout({
               {' '}
               <Link
                 href="/why-us"
-                className="hover:text-blue-600 transition-colors"
-              >
-                {' '}
-                Why Us{' '}
-              </Link>{' '}
-              <Link
+href="/contact"                className="hover:text-blue-600 transition-colors"              >                Contact              </Link>
                 href="/contact"
                 className="hover:text-blue-600 transition-colors"
               >
