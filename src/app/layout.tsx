@@ -1,75 +1,15 @@
-import { Inter } from 'next/font/google';
-import { Geist_Sans, Geist_Mono } from 'next/font/geist';
-import type { Metadata } from 'next';
-import Link from 'next/link';
 import './globals.css';
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const geistSans = Geist_Sans({ variable: '--font-geist-sans' });
-const geistMono = Geist_Mono({ variable: '--font-geist-mono' });
-export const metadata: Metadata = {
-  title: 'Next Solutions - Digital Transformation Experts',
-  description: 'Industry-leading digital solutions for modern businesses',
-  keywords: ['digital transformation'],
-};
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       {' '}
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         {' '}
-        <nav className="sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
-          {' '}
-          <div className="max-w-6xl mx-auto px-8 py-4 flex justify-between items-center">
-            {' '}
-            <Link href="/" className="text-xl font-bold">
-              {' '}
-              Next Solutions{' '}
-            </Link>{' '}
-            <div className="space-x-6">
-              {' '}
-              <Link
-                href="/why-us"
-                className="hover:text-blue-600 transition-colors"
-              >
-                {' '}
-                Why Us{' '}
-              </Link>{' '}
-              <Link
-                href="/contact"
-                className="hover:text-blue-600 transition-colors"
-              >
-                {' '}
-                Contact{' '}
-              </Link>{' '}
-            </div>{' '}
-          </div>{' '}
-        </nav>{' '}
-        {children}{' '}
-      </body>{' '}
-    </html>
-  );
-}
-
-                className="hover:text-blue-600 transition-colors"
-              >
-                {' '}
-                Why Us{' '}
-              </Link>{' '}
-              <Link
-                href="/contact"
-                className="hover:text-blue-600 transition-colors"
-              >
-                {' '}
-                Contact{' '}
-              </Link>{' '}
-            </div>{' '}
-          </div>{' '}
-        </nav>{' '}
-        {children}{' '}
+        <main className="min-h-screen"> {children} </main>{' '}
       </body>{' '}
     </html>
   );
