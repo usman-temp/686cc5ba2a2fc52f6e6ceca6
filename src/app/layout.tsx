@@ -1,13 +1,9 @@
 import { Geist_Sans, Geist_Mono } from 'next/font/geist';
-
 import type { Metadata } from 'next';
 import './globals.css';
 const geistSans = Geist_Sans({ variable: '--font-geist-sans' });
-
-});
-const geistMono = GeistMono({
 const geistMono = Geist_Mono({ variable: '--font-geist-mono' });
-
+export const metadata: Metadata = {
   title: 'Next Solutions - Digital Transformation Experts',
   description: 'Industry-leading digital solutions for modern businesses',
   keywords: ['digital transformation'],
@@ -48,6 +44,13 @@ export default function RootLayout({
               </Link>{' '}
             </div>{' '}
           </div>{' '}
+        </nav>{' '}
+        {children}{' '}
+      </body>{' '}
+    </html>
+  );
+}
+
         </nav>{' '}
         {children}{' '}
       </body>{' '}
