@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 import { Geist_Sans, Geist_Mono } from 'next/font/geist';
 import type { Metadata } from 'next';
-import Link from 'next/link';
+<body className={`${inter.variable} antialiased`}>
 import './globals.css';
 const geistSans = Geist_Sans({ variable: '--font-geist-sans' });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono' });
