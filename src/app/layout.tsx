@@ -2,8 +2,8 @@ import { Inter } from 'next/font/google';
 
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import './globals.css';
-const geistSans = Geist_Sans({ variable: '--font-geist-sans' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+
 const geistMono = Geist_Mono({ variable: '--font-geist-mono' });
 export const metadata: Metadata = {
   title: 'Next Solutions - Digital Transformation Experts',
