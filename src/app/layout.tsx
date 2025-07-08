@@ -1,19 +1,9 @@
 import { Inter } from 'next/font/google';
-
-import type { Metadata } from 'next';
-import Link from 'next/link';
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-
-const geistMono = Geist_Mono({ variable: '--font-geist-mono' });
-export const metadata: Metadata = {
-  title: 'Next Solutions - Digital Transformation Experts',
-  description: 'Industry-leading digital solutions for modern businesses',
-  keywords: ['digital transformation'],
-};
 import { Geist_Sans, Geist_Mono } from 'next/font/geist';
 import type { Metadata } from 'next';
-<body className={`${inter.variable} antialiased`}>
+import Link from 'next/link';
 import './globals.css';
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const geistSans = Geist_Sans({ variable: '--font-geist-sans' });
 const geistMono = Geist_Mono({ variable: '--font-geist-mono' });
 export const metadata: Metadata = {
@@ -58,6 +48,12 @@ export default function RootLayout({
             </div>{' '}
           </div>{' '}
         </nav>{' '}
+        {children}{' '}
+      </body>{' '}
+    </html>
+  );
+}
+
         {children}{' '}
       </body>{' '}
     </html>
