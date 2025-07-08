@@ -52,6 +52,20 @@ export default function RootLayout({
   );
 }
 
+                className="hover:text-blue-600 transition-colors"
+              >
+                {' '}
+                Contact{' '}
+              </Link>{' '}
+            </div>{' '}
+          </div>{' '}
+        </nav>{' '}
+        {children}{' '}
+      </body>{' '}
+    </html>
+  );
+}
+
 import { Geist_Sans, Geist_Mono } from 'next/font/geist';
 import type { Metadata } from 'next';
 import Link from 'next/link';
