@@ -1,4 +1,5 @@
-import { GeistSans, GeistMono } from 'next/font/geist';
+import { Geist_Sans, Geist_Mono } from 'next/font/geist';
+
 import type { Metadata } from 'next';
 import './globals.css';
 import Link from 'next/link';
