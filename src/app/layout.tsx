@@ -9,6 +9,17 @@ export const metadata: Metadata = {
   description: 'Industry-leading digital solutions for modern businesses',
   keywords: ['digital transformation'],
 };
+import { Geist_Sans, Geist_Mono } from 'next/font/geist';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import './globals.css';
+const geistSans = Geist_Sans({ variable: '--font-geist-sans' });
+const geistMono = Geist_Mono({ variable: '--font-geist-mono' });
+export const metadata: Metadata = {
+  title: 'Next Solutions - Digital Transformation Experts',
+  description: 'Industry-leading digital solutions for modern businesses',
+  keywords: ['digital transformation'],
+};
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -31,6 +42,27 @@ export default function RootLayout({
               {' '}
               <Link
                 href="/why-us"
+                className="hover:text-blue-600 transition-colors"
+              >
+                {' '}
+                Why Us{' '}
+              </Link>{' '}
+              <Link
+                href="/contact"
+                className="hover:text-blue-600 transition-colors"
+              >
+                {' '}
+                Contact{' '}
+              </Link>{' '}
+            </div>{' '}
+          </div>{' '}
+        </nav>{' '}
+        {children}{' '}
+      </body>{' '}
+    </html>
+  );
+}
+
                 className="hover:text-blue-600 transition-colors"
               >
                 {' '}
