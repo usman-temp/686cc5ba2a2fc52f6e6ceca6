@@ -37,26 +37,7 @@ export default function RootLayout({
               </Link>{' '}
               <Link
                 href="/contact"
-                className="hover:text-blue-600 transition-colors"
-              >
-                {' '}
-                Contact{' '}
-              </Link>{' '}
-            </div>{' '}
-          </div>{' '}
-        </nav>{' '}
-        {children}{' '}
-      </body>{' '}
-    </html>
-  );
-}
 
-      {' '}
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {' '}
-        <nav className="sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
           {' '}
           <div className="max-w-6xl mx-auto px-8 py-4 flex justify-between items-center">
             {' '}
