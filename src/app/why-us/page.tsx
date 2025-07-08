@@ -1,44 +1,45 @@
 import { CTAButton } from '@/components/cta-button';
-
 import { Metadata } from 'next';
-async function getMissionVision() {
-  return client.fetch(`*[_type == 'missionVision'][0]`);
-}
-async function getFeatures() {
-  return client.fetch(`*[_type == 'features']`);
-}
 import Image from 'next/image';
 import Link from 'next/link';
+import { client } from '@/lib/sanity/client';
+interface MissionVision {
+  mission: string;
+  vision: string;
+  values: Array<{ title: string; description: string; icon: string }>;
+}
+interface Feature {
+  title: string;
+  description: string;
+  icon: string;
+}
+async function getMissionVision(): Promise<MissionVision> {
+  return client.fetch(
+    "*[_type == 'missionVision'][0]{    mission,    vision,    values[]{      title,      description,      icon    }  }"
+  );
+}
+async function getFeatures(): Promise<Feature[]> {
+  return client.fetch("*[_type == 'features']{title, description, icon}");
+}
 export const metadata: Metadata = {
   title: 'Why Choose Us - Next Solutions',
   description:
     'Discover why thousands of businesses choose Next Solutions for their digital transformation needs.',
   keywords: ['next solutions', 'why us', 'features', 'advantages'],
 };
-const features = [
-  {
-    title: 'Industry Expertise',
-    description: '10+ years experience in delivering cutting-edge solutions',
-    icon: '/file.svg',
-  },
-  {
-    title: 'Award-Winning Team',
-    description: 'Recognized by TechCrunch as top innovators 2023',
-    icon: '/globe.svg',
-  },
-  {
-    title: '24/7 Support',
-    description: 'Dedicated support team available round the clock',
-    icon: '/window.svg',
-  },
-];
-export default function WhyUs() {
+export default async function WhyUs() {
+  const [missionVision, features] = await Promise.all([
+    getMissionVision(),
+    getFeatures(),
+  ]);
+  if (!missionVision || !features) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8">
       {' '}
       <section className="max-w-7xl mx-auto space-y-20">
         {' '}
-        {/* Hero Section */}{' '}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {' '}
           <div className="space-y-6">
@@ -49,10 +50,7 @@ export default function WhyUs() {
             </h1>{' '}
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
               {' '}
-              We bridge the gap between technology and business success through
-              innovative solutions tailored to your unique needs. Our
-              human-centered approach ensures we deliver measurable results that
-              drive growth.{' '}
+              {missionVision.mission}{' '}
             </p>{' '}
             <CTAButton />{' '}
           </div>{' '}
@@ -67,7 +65,6 @@ export default function WhyUs() {
             />{' '}
           </div>{' '}
         </div>{' '}
-        {/* Values Section */}{' '}
         <section className="space-y-12">
           {' '}
           <div className="text-center max-w-3xl mx-auto">
@@ -80,23 +77,7 @@ export default function WhyUs() {
           </div>{' '}
           <div className="grid md:grid-cols-3 gap-8">
             {' '}
-            {[
-              {
-                title: 'Client-Centric Approach',
-                description: 'Your success is our primary metric',
-                icon: '/user.svg',
-              },
-              {
-                title: 'Transparent Process',
-                description: 'Clear communication at every stage',
-                icon: '/shield.svg',
-              },
-              {
-                title: 'Continuous Innovation',
-                description: 'Always pushing technological boundaries',
-                icon: '/rocket.svg',
-              },
-            ].map((feature, index) => (
+            {missionVision.values.map((value, index) => (
               <div
                 key={index}
                 className="p-8 rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-2xl transition-all duration-300 group"
@@ -105,23 +86,23 @@ export default function WhyUs() {
                 <div className="w-14 h-14 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mb-6">
                   {' '}
                   <Image
-                    src={feature.icon}
-                    alt={feature.title}
+                    src={value.icon}
+                    alt={value.title}
                     width={32}
                     height={32}
                     className="dark:invert"
                   />{' '}
                 </div>{' '}
-                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>{' '}
+                <h3 className="text-xl font-semibold mb-3">{value.title}</h3>{' '}
                 <p className="text-gray-600 dark:text-gray-400">
                   {' '}
-                  {feature.description}{' '}
+                  {value.description}{' '}
                 </p>{' '}
               </div>
             ))}{' '}
           </div>{' '}
         </section>{' '}
-        {/* Features Grid */} <FeaturesGrid /> {/* CTA Section */}{' '}
+        <FeaturesGrid features={features} />{' '}
         <section className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 md:p-12 text-center">
           {' '}
           <div className="max-w-2xl mx-auto text-white">
@@ -132,8 +113,8 @@ export default function WhyUs() {
             </h2>{' '}
             <p className="mb-8 text-blue-100">
               {' '}
-              Join hundreds of satisfied clients who've accelerated their growth
-              with our solutions{' '}
+              Join hundreds of satisfied clients who&apos;ve accelerated their
+              growth with our solutions{' '}
             </p>{' '}
             <CTAButton />{' '}
           </div>{' '}
@@ -142,7 +123,7 @@ export default function WhyUs() {
     </div>
   );
 }
-const FeaturesGrid = () => (
+const FeaturesGrid = ({ features }: { features: Feature[] }) => (
   <section className="space-y-12">
     {' '}
     <div className="text-center max-w-3xl mx-auto">
@@ -178,13 +159,4 @@ const FeaturesGrid = () => (
       ))}{' '}
     </div>{' '}
   </section>
-);
-const CTAButton = () => (
-  <Link
-    href="/contact"
-    className="inline-block bg-white text-blue-600 px-8 py-4 rounded-full hover:bg-gray-50 transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl w-full sm:w-auto text-center transform hover:-translate-y-1"
-  >
-    {' '}
-    Schedule a Free Consultation{' '}
-  </Link>
 );
