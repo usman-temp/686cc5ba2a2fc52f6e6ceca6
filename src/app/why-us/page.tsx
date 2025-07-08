@@ -1,4 +1,11 @@
-import { Metadata } from 'next';
+import { client } from '@/lib/sanity/client';
+async function getMissionVision() {
+  return client.fetch(`*[_type == 'missionVision'][0]`);
+}
+async function getFeatures() {
+  return client.fetch(`*[_type == 'features']`);
+}
+
 import Image from 'next/image';
 import Link from 'next/link';
 
