@@ -15,9 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Next Solutions - Digital Transformation Experts',
   description: 'Industry-leading digital solutions for modern businesses',
-  keywords: [
-    'digital transformation',
-export default function RootLayout({
+keywords: [    'digital transformation',  ]
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
