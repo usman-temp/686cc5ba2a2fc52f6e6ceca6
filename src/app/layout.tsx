@@ -54,12 +54,6 @@ export default function RootLayout({
   );
 }
 
-        {children}{' '}
-      </body>{' '}
-    </html>
-  );
-}
-
                 className="hover:text-blue-600 transition-colors"
               >
                 {' '}
