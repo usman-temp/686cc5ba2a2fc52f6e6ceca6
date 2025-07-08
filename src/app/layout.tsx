@@ -6,10 +6,8 @@ const geistSans = Geist_Sans({ variable: '--font-geist-sans' });
 
 });
 const geistMono = GeistMono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
-export const metadata: Metadata = {
+const geistMono = Geist_Mono({ variable: '--font-geist-mono' });
+
   title: 'Next Solutions - Digital Transformation Experts',
   description: 'Industry-leading digital solutions for modern businesses',
   keywords: ['digital transformation'],
