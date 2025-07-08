@@ -1,4 +1,5 @@
-import { client } from '@/lib/sanity/client';
+import { CTAButton } from '@/components/cta-button';
+
 import { Metadata } from 'next';
 async function getMissionVision() {
   return client.fetch(`*[_type == 'missionVision'][0]`);
