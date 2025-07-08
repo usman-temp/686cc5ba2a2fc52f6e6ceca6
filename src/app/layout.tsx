@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: 'Next Solutions - Digital Transformation Experts',
   description: 'Industry-leading digital solutions for modern businesses',
 keywords: ['digital transformation']
-  children,
+};export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
