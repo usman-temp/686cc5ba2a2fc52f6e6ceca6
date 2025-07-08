@@ -52,6 +52,17 @@ export default function RootLayout({
   );
 }
 
+                Contact{' '}
+              </Link>{' '}
+            </div>{' '}
+          </div>{' '}
+        </nav>{' '}
+        {children}{' '}
+      </body>{' '}
+    </html>
+  );
+}
+
           </div>{' '}
         </nav>{' '}
         {children}{' '}
