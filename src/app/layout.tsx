@@ -51,15 +51,6 @@ export default function RootLayout({
   );
 }
 
-        </nav>{' '}
-        {children}{' '}
-      </body>{' '}
-    </html>
-  );
-}
-
-  return (
-    <html lang="en">
       {' '}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
